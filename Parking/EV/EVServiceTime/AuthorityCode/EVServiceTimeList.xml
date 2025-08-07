@@ -1,0 +1,32 @@
+<EVServiceTimeList xsi:schemaLocation="https://traffic.transportdata.tw/standard/EVStation/schema/" xmlns="https://traffic.transportdata.tw/standard/EVStation/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <UpdateTime>2025-08-05T17:32:07+08:00</UpdateTime>
+  <UpdateInterval>86400</UpdateInterval>
+  <AuthorityCode>KHH</AuthorityCode>
+  <OperatorID>94703643</OperatorID>
+  <ServiceTimes>
+    <ServiceTime>
+      <StationID>94703643-SFS0000</StationID>
+      <OpeningHours>
+        <OpeningHour>
+          <ServiceType>1</ServiceType>
+          <DayType>1</DayType>
+          <StartTime>00:00</StartTime>
+          <EndTime>24:00</EndTime>
+          <LastEntranceTime>…</LastEntranceTime>
+        </OpeningHour>
+      </OpeningHours>
+    </ServiceTime>
+    <ServiceTime>
+      <StationID>94703643-SCG0000</StationID>
+      <OpeningHours>
+        <OpeningHour>
+          <ServiceType>1</ServiceType>
+          <DayType>1</DayType>
+          <StartTime>00:00</StartTime>
+          <EndTime>24:00</EndTime>
+          <LastEntranceTime>…</LastEntranceTime>
+        </OpeningHour>
+      </OpeningHours>
+    </ServiceTime>
+  </ServiceTimes>
+</EVServiceTimeList>
