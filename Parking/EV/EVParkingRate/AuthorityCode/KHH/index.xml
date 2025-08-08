@@ -12,6 +12,9 @@
           <RateType>3</RateType>
           <PricingType>1</PricingType>
           <DayType>1</DayType>
+          <RateSequence>1</RateSequence>
+          <StayStart>0</StayStart>
+          <StayEnd>360</StayEnd>
           <RatePrice>30</RatePrice>
           <StartTime>00:00</StartTime>
           <EndTime>24:00</EndTime>
@@ -27,6 +30,9 @@
           <RateType>3</RateType>
           <PricingType>1</PricingType>
           <DayType>1</DayType>
+          <RateSequence>1</RateSequence>
+          <StayStart>0</StayStart>
+          <StayEnd>360</StayEnd>
           <RatePrice>30</RatePrice>
           <StartTime>00:00</StartTime>
           <EndTime>24:00</EndTime>
@@ -38,3 +44,4 @@
   </ParkingRates>
 
 </EVParkingRateList>
+
