@@ -3,7 +3,7 @@
   <UpdateTime>2025-08-07T17:32:07+08:00</UpdateTime>
   <UpdateInterval>300</UpdateInterval>
   <AuthorityCode>KHH</AuthorityCode>
-  <OperatorID>94703643</OperatorID>
+  <OperatorID>54153988</OperatorID>
   <LiveStatuses>
     <LiveStatus>
       <StationID>94703643-SFS0000</StationID>
@@ -30,4 +30,5 @@
       <LastUpdateTime>2025-08-07T17:32:07+08:00</LastUpdateTime>
     </LiveStatus>
   </LiveStatuses>
+
 </EVConnectorLiveStatusList>
