@@ -17,16 +17,11 @@
       <PositionLon>120.34652</PositionLon>      
       <Spaces>2</Spaces>
       <ChargingPoints>2</ChargingPoints>
-      <Connectors>
+      <Connectors>       
         <Connector>
           <Type>5</Type>
           <Power>1</Power>
-          <Quantity>1</Quantity>
-        </Connector>
-        <Connector>
-          <Type>5</Type>
-          <Power>1</Power>
-          <Quantity>1</Quantity>
+          <Quantity>2</Quantity>
         </Connector>
       </Connectors>
       <ServiceTime>24小時</ServiceTime>
@@ -87,4 +82,5 @@
   </Stations>
 
 </EVStationList>
+
 
