@@ -1,0 +1,35 @@
+name: Auto Update <UpdateTime>
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # 每 5 分鐘（UTC 時間）
+  workflow_dispatch:        # 可手動觸發測試
+
+permissions:
+  contents: write           # 允許 Actions 寫入 repo
+
+jobs:
+  update-time:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Update <UpdateTime> (台北時間)
+        run: |
+          set -e
+          FILE="Parking/EV/EVConnectorLiveStatus/AuthorityCode/KHH/index.xml"
+          NOW=$(TZ=Asia/Taipei date +"%Y-%m-%dT%H:%M:%S%:z")
+          sed -E -i "s|<UpdateTime>[^<]*</UpdateTime>|<UpdateTime>${NOW}</UpdateTime>|g" "$FILE"
+
+      - name: Commit & push if changed
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: "Auto update <UpdateTime> (by GitHub Actions) [skip ci]"
+          add: '.'
+          push: true
