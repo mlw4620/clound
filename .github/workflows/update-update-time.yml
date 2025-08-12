@@ -2,27 +2,28 @@ name: Auto Update <UpdateTime>
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # 每 5 分鐘（UTC 時間）
-  workflow_dispatch:        # 可手動觸發測試
+    - cron: '*/5 * * * *'     # job1：每 5 分鐘（UTC）
+    - cron: '0 0 * * *'       # job2：每天 00:00 UTC
+  workflow_dispatch:          # 可手動觸發
 
 permissions:
-  contents: write           # 允許 Actions 寫入 repo
+  contents: write
 
 jobs:
-  update-time:
+  update-every-5-mins:
+    if: github.event.schedule == '*/5 * * * *'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
 
-      - name: Update <UpdateTime> (台北時間)
+      - name: Update file (every 5 mins)
         run: |
-          set -e
           FILE="Parking/EV/EVConnectorLiveStatus/AuthorityCode/KHH/index.xml"
           NOW=$(TZ=Asia/Taipei date +"%Y-%m-%dT%H:%M:%S%:z")
+          echo "Updating: $FILE to $NOW"
           sed -E -i "s|<UpdateTime>[^<]*</UpdateTime>|<UpdateTime>${NOW}</UpdateTime>|g" "$FILE"
 
       - name: Commit & push if changed
@@ -30,6 +31,41 @@ jobs:
         with:
           author_name: github-actions[bot]
           author_email: github-actions[bot]@users.noreply.github.com
-          message: "Auto update <UpdateTime> (by GitHub Actions) [skip ci]"
+          message: "Auto update <UpdateTime> (5-min job) [skip ci]"
+          add: '.'
+          push: true
+
+  update-every-day:
+    if: github.event.schedule == '0 0 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update files (daily)
+        run: |
+          FILES=(
+            "Parking/EV/EVChargingPoint/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVChargingRate/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVConnector/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVOperator/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVParkingRate/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVServiceTime/AuthorityCode/KHH/index.xml"
+            "Parking/EV/EVStation/AuthorityCode/KHH/index.xml"
+          )
+          NOW=$(TZ=Asia/Taipei date +"%Y-%m-%dT%H:%M:%S%:z")
+          for f in "${FILES[@]}"; do
+            echo "Updating: $f to $NOW"
+            sed -E -i "s|<UpdateTime>[^<]*</UpdateTime>|<UpdateTime>${NOW}</UpdateTime>|g" "$f"
+          done
+
+      - name: Commit & push if changed
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: "Auto update <UpdateTime> (daily job) [skip ci]"
           add: '.'
           push: true
