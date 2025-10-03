@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EVConnectorLiveStatusList xsi:schemaLocation="https://traffic.transportdata.tw/standard/EVStation/schema/" xmlns="https://traffic.transportdata.tw/standard/EVStation/schema/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UpdateTime>2025-10-03T09:30:13+08:00</UpdateTime>
+  <UpdateTime>2025-10-03T09:35:09+08:00</UpdateTime>
   <UpdateInterval>300</UpdateInterval>
   <AuthorityCode>KHH</AuthorityCode>
   <OperatorID>54153988</OperatorID>
